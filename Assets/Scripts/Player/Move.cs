@@ -13,8 +13,10 @@ public class Move : MonoBehaviour
     private Vector3 velocity;
 
     [Header("Crouch")]
-    public float crouchHeight = 1f;
+    public float crouchHeight = 0f;
+    public float crouchRadius = 0.25f;
     private float normalHeight;
+    private float normalRadius;
     private Vector3 normalCenter;
     private Vector3 crouchCenter;
 
@@ -25,6 +27,7 @@ public class Move : MonoBehaviour
         // Save original height and center for crouching
         normalHeight = controller.height;
         normalCenter = controller.center;
+        normalRadius = controller.radius;
 
         // Calculate the center position for crouching based on the normal center and the difference in height
         crouchCenter = new Vector3(normalCenter.x, normalCenter.y / 2f, normalCenter.z);
@@ -64,11 +67,13 @@ public class Move : MonoBehaviour
         {
             controller.height = crouchHeight;
             controller.center = crouchCenter;
+            controller.radius = crouchRadius;
         }
         else
         {
             controller.height = normalHeight;
             controller.center = normalCenter;
+            controller.radius = normalRadius;
         }
     }
 }
