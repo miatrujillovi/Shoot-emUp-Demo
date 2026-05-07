@@ -4,12 +4,16 @@ public class Bullet : MonoBehaviour
 {
     public float speed = 20f;
     public float lifetime = 3f;
-    public int damage;
+    private int damage;
     
     private Rigidbody rb;
 
     private void Start()
     {
+        damage = ComboManager.Instance.SetDamage();
+
+        Debug.Log("Bala creada con daño: " + damage);
+
         Destroy(gameObject, lifetime);
         
         rb = GetComponent<Rigidbody>();
@@ -29,17 +33,17 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Colisión detectada con: " + other.gameObject.name);
+        //Debug.Log("Colisión detectada con: " + other.gameObject.name);
 
         if (other.TryGetComponent(out IDamageble damageble))
         {
-            Debug.Log("IDamageble encontrado, aplicando daño: " + damage);
+            //Debug.Log("IDamageble encontrado, aplicando daño: " + damage);
             damageble.Damage(damage);
             Destroy(gameObject);
         }
         else
         {
-            Debug.Log("No se encontró IDamageble en " + other.gameObject.name);
+            //Debug.Log("No se encontró IDamageble en " + other.gameObject.name);
             Destroy(gameObject);
         }
     }

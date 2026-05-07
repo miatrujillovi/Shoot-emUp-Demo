@@ -62,7 +62,7 @@ public class ObjetivesSpawner : MonoBehaviour
             objetivoScript.tipoObjetivo = tipoActual;
         }
 
-        Debug.Log($"Objetivo {objetivosCreados + 1} de tipo {tipoActual} creado en {posicionAleatoria}");
+        //Debug.Log($"Objetivo {objetivosCreados + 1} de tipo {tipoActual} creado en {posicionAleatoria}");
         objetivosCreados++;
     }
 

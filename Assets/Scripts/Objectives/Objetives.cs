@@ -8,19 +8,21 @@ public class Objetives : MonoBehaviour, IDamageble
 
     private float currentHealth;
     private int maxHealth;
-    
+    private int comboAmount;
+
     private void Start()
     {
         maxHealth = ObjetivesManager.Instance.ObtenerVidaMaxima(tipoObjetivo);
+        comboAmount = ObjetivesManager.Instance.ObtenerComboAmount(tipoObjetivo);
         currentHealth = maxHealth;
 
-        Debug.Log($"Objetivo tipo {tipoObjetivo} creado con {maxHealth} de vida");
+        //Debug.Log($"Objetivo tipo {tipoObjetivo} creado con {maxHealth} de vida");
     }
 
     public void Damage(int damage)
     {
         currentHealth -= damage;
-        Debug.Log($"Objetivo {tipoObjetivo} recibió {damage} de daño. Vida restante: {currentHealth}");
+        //Debug.Log($"Objetivo {tipoObjetivo} recibió {damage} de daño. Vida restante: {currentHealth}");
 
         if (currentHealth <= 0)
         {
@@ -30,7 +32,8 @@ public class Objetives : MonoBehaviour, IDamageble
 
     public void Die()
     {
-        Debug.Log($"Objetivo {tipoObjetivo} ha sido destruido");
+        //Debug.Log($"Objetivo {tipoObjetivo} ha sido destruido");
+        ComboManager.Instance.AumentarCombo(comboAmount);
         Destroy(gameObject);
     }
 }
