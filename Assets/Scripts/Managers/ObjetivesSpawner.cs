@@ -42,20 +42,16 @@ public class ObjetivesSpawner : MonoBehaviour
             return;
         }
 
-        // Determinar el tipo según cuántos objetivos se han creado
         Tipo tipoActual = ObtenerTipoSegunCuenta();
 
-        // Generar posición aleatoria dentro del rango
         Vector3 posicionAleatoria = posicionSpawn + new Vector3(
             Random.Range(-rangoSpawn.x, rangoSpawn.x),
             Random.Range(-rangoSpawn.y, rangoSpawn.y),
             Random.Range(-rangoSpawn.z, rangoSpawn.z)
         );
 
-        // Instanciar el objetivo
         GameObject nuevoObjetivo = Instantiate(objetivoPrefab, posicionAleatoria, Quaternion.identity);
 
-        // Asignar el tipo al objetivo
         Objetives objetivoScript = nuevoObjetivo.GetComponent<Objetives>();
         if (objetivoScript != null)
         {
@@ -75,18 +71,16 @@ public class ObjetivesSpawner : MonoBehaviour
             0 => Tipo.Diana1,
             1 => Tipo.Diana2,
             2 => Tipo.Diana3,
-            _ => Tipo.Diana3  // Si se pasa del límite, sigue siendo Diana3
+            _ => Tipo.Diana3 
         };
     }
 
-    // Método para resetear el spawner
     public void Resetear()
     {
         objetivosCreados = 0;
         tiempoSiguienteSpawn = tiempoEntreSpawns;
     }
 
-    // Método para pausar/reanudar spawns
     public void PausarSpawns(bool pausado)
     {
         enabled = !pausado;

@@ -166,10 +166,16 @@ MonoBehaviour:
   tiposDisponibles:
   - Type: 0
     maxHealth: 2
+    comboAmount: 1
+    speed: 2
   - Type: 1
     maxHealth: 4
+    comboAmount: 2
+    speed: 4
   - Type: 2
     maxHealth: 6
+    comboAmount: 3
+    speed: 6
 --- !u!1 &138346904
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,8 +441,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f00d35374ef2374b9ade42d7e0eb6bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Look
-  sensitivityX: 15
-  sensitivityY: 15
+  sensitivityX: 25
+  sensitivityY: 25
   minXLookAngle: -80
   maxXLookAngle: 80
   minYLookAngle: -90
@@ -690,8 +696,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjetivesSpawner
   objetivoPrefab: {fileID: 6272357163160507001, guid: 820723bc8c1e3f6499f299a19065def1, type: 3}
-  tiempoEntreSpawns: 3
-  objetivosPorTipo: 4
+  tiempoEntreSpawns: 2
+  objetivosPorTipo: 8
   posicionSpawn: {x: 0, y: 3, z: 10}
   rangoSpawn: {x: 3, y: 3, z: 0}
 --- !u!1 &742612155

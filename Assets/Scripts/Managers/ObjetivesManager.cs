@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 public enum Tipo
 {
     Diana1,
@@ -12,6 +13,7 @@ public class TipoObjetivo
     public Tipo Type;
     public int maxHealth;
     public int comboAmount;
+    public float speed;
 }
 
 public class ObjetivesManager : MonoBehaviour
@@ -21,9 +23,9 @@ public class ObjetivesManager : MonoBehaviour
     [SerializeField]
     private TipoObjetivo[] tiposDisponibles = new TipoObjetivo[3]
     {
-        new TipoObjetivo { Type = Tipo.Diana1, maxHealth = 2 , comboAmount = 1},
-        new TipoObjetivo { Type = Tipo.Diana2, maxHealth = 4 , comboAmount = 2},
-        new TipoObjetivo { Type = Tipo.Diana3, maxHealth = 6 , comboAmount = 3}
+        new TipoObjetivo { Type = Tipo.Diana1, maxHealth = 2 , comboAmount = 1, speed = 3},
+        new TipoObjetivo { Type = Tipo.Diana2, maxHealth = 4 , comboAmount = 2, speed = 6},
+        new TipoObjetivo { Type = Tipo.Diana3, maxHealth = 6 , comboAmount = 3, speed = 9}
     };
 
     private void Awake()
@@ -62,4 +64,17 @@ public class ObjetivesManager : MonoBehaviour
         Debug.LogWarning($"Tipo {tipo} no encontrado, usando comboAmount por defecto 1");
         return 1;
     }   
+
+    public float ObtenerVelocidad(Tipo tipo)
+    {
+        foreach (TipoObjetivo tipoObj in tiposDisponibles)
+        {
+            if (tipoObj.Type == tipo)
+            {
+                return tipoObj.speed;
+            }
+        }
+        Debug.LogWarning($"Tipo {tipo} no encontrado, usando comboAmount por defecto 1");
+        return 1;
+    }
 }

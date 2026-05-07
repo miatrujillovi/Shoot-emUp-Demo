@@ -24,7 +24,7 @@ public class ComboManager : MonoBehaviour
     {
         currentComboCount = currentComboCount + cantidad;
         ActualizarUI();
-        Debug.Log("Combo aumentado: " + currentComboCount);
+        //Debug.Log("Combo aumentado: " + currentComboCount);
     }
 
     public void ReiniciarCombo()
@@ -43,8 +43,8 @@ public class ComboManager : MonoBehaviour
 
     public int SetDamage()
     {
-        // El daño se calcula en función del combo actual, aumentando cada 4 combos, con un máximo de 3 niveles de daño.
-        return Mathf.Clamp(Mathf.Max(1, Mathf.FloorToInt(currentComboCount / 4f)),1 , 3);
+        // El daño se calcula en función del combo actual, aumentando cada 4 combos, con un máximo de 6 niveles de daño.
+        return Mathf.Clamp(Mathf.FloorToInt(currentComboCount / 4f),1 , 6);
     }
 
     public void ActualizarUI()

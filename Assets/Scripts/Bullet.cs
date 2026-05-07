@@ -25,10 +25,12 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
+        /*
         if (rb == null)
         {
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
         }
+        */
     }
 
     private void OnTriggerEnter(Collider other)
